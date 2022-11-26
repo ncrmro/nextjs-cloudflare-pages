@@ -11,7 +11,7 @@ function ChainSelect({
   chainIds,
 }: {
   chainId: number;
-  switchChain: (chainId: number) => void | undefined;
+  switchChain?: (chainId: number) => void;
   displayDefault: boolean;
   chainIds: number[];
 }) {
@@ -106,7 +106,7 @@ export function ConnectWithSelect({
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
         <ChainSelect
-          chainId={desiredChainId === -1 ? -1 : chainId}
+          chainId={desiredChainId === -1 ? -1 : chainId || -1}
           switchChain={switchChain}
           displayDefault={displayDefault}
           chainIds={chainIds}
