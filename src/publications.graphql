@@ -1,0 +1,19 @@
+query Publications {
+  publications(request: { profileId: "0xe4ce", publicationTypes: [POST] }) {
+    items {
+      ... on Post {
+        ...PublicationsPost
+      }
+    }
+  }
+}
+
+
+fragment PublicationsPost on Post {
+  id
+  metadata {
+    name
+    description
+    content
+  }
+}

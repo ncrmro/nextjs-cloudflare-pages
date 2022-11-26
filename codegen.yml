@@ -1,0 +1,13 @@
+schema: schema.graphql
+documents: ./src/**/*.graphql
+generates:
+  src/graphql-types.ts:
+    plugins:
+      - typescript
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: ~~/graphql-types
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
