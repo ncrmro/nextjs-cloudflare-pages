@@ -31,7 +31,7 @@ export default function Home() {
         <MetaMaskCard />
 
         {posts?.map((node) => (
-          <div>
+          <div key={node.id}>
             <div>{node.metadata.name}</div>
             <div>{node.metadata.description}</div>
             <div>{node.metadata.content}</div>
