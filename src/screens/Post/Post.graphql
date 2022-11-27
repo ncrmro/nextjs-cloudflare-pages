@@ -1,0 +1,16 @@
+query PostScreen($publicationId: InternalPublicationId!) {
+    publication(request: {publicationId: $publicationId}) {
+        ... on Post {
+            ...PostScreenPost
+        }
+    }
+}
+
+fragment PostScreenPost on Post {
+    id
+    appId
+    metadata {
+        name
+        description
+    }
+}
