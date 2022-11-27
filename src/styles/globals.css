@@ -1,26 +1,209 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+/* https://material.io/design/color/the-color-system.html#color-theme-creation */
+:root {
+  font-family: Helvetica Neue, sans-serif;
+  --background: unset;
+  --onBackground: unset;
+  --surface: unset;
+  --onSurface: unset;
+  --onSurfaceRGB: 255, 255, 255;
+  --onPrimary: #000;
+  --primary: #36baa2;
+  --secondary: red;
+  /*Set text to white by default*/
+  color: var(--onBackground);
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  :root {
+    --background: #121212;
+    --onBackground: #fff;
+    --surface: #000000;
+    --onSurface: #fff;
+    --onSurfaceRGB: 255, 255, 255;
+    --onPrimary: #000;
+    --primary: #36baa2;
+    --secondary: red;
+    /*Set text to white by default*/
+    color: var(--onBackground);
   }
-  body {
-    color: white;
-    background: black;
+}
+
+
+
+html,
+body {
+  background-color: var(--background);
+  margin: 0;
+}
+
+a {
+  color: var(--onSurface);
+}
+
+#navbar a {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  padding: 0 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+#navbar a.active {
+  text-decoration: underline;
+}
+
+main {
+  min-height: calc(100vh - 100px);
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+footer {
+  height: 4rem;
+  background: var(--surface);
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+#footer-social-links {
+  position: absolute;
+  right: 32px;
+}
+@media only screen and (max-width: 600px) {
+  footer {
+    flex-direction: column;
   }
+  #footer-social-links {
+    position: unset;
+    right: 32px;
+  }
+}
+
+footer a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+}
+
+button {
+  padding: 14px 0;
+  background-color: var(--primary);
+  width: 265px;
+  color: var(--onPrimary);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  border: 0;
+  border-radius: 4px;
+}
+
+form {
+  /*use class if needs to be wider that this*/
+  max-width: 600px;
+  background: var(--surface);
+  gap: 1rem;
+}
+
+input {
+  padding: 12px 12px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Begin utility classes (tailwind styles) */
+.button-sm {
+  width: 128px;
+}
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.float-right {
+  float: right;
+}
+
+.gap-4 {
+  gap: 1em;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.p-4 {
+  padding: 1em;
+}
+
+.justify-items-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+/* End utility classes (tailwind styles) */
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  background: var(--surface);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.card-header a {
+  text-decoration: none;
+}
+
+.card-content {
 }
