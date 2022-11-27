@@ -1,0 +1,19 @@
+query PostsScreen($profileId: ProfileId!) {
+    publications(request: { profileId: $profileId, publicationTypes: [POST] }) {
+        items {
+            ... on Post {
+                ...PostsScreenPost
+            }
+        }
+    }
+}
+
+
+fragment PostsScreenPost on Post {
+    id
+    appId
+    metadata {
+        name
+        description
+    }
+}
