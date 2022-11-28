@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.25.2",
+    "dotenv": "^16.0.3"
+  }
+}
