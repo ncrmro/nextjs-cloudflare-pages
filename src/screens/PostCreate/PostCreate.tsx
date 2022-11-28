@@ -33,7 +33,6 @@ export default function PostCreate() {
     slug: undefined,
     content: "# test\nbla bla\n ## test boy",
   });
-  console.log(state);
 
   const togglePreview = async () => {
     let url = router.pathname;
@@ -50,7 +49,9 @@ export default function PostCreate() {
       <div className="flex-col">
         <h1>Create Post</h1>
         <div>
-          <button onClick={togglePreview}>Preview</button>
+          <button onClick={togglePreview}>
+            {isPreview ? "Close Preview" : "Preview"}
+          </button>
         </div>
       </div>
       {isPreview ? (
