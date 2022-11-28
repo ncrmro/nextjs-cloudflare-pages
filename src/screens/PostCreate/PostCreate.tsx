@@ -1,23 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
-
-function fieldReducer(
-  state: { title: string; slug?: string; content: string },
-  event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-) {
-  const { name, value } = event.target;
-  switch (name) {
-    case "title":
-    case "slug":
-    case "content":
-      state[name] = value;
-      break;
-    default:
-      throw new Error("Field was not expected");
-  }
-  return structuredClone(state);
-}
+import PostForm, { usePostFormState } from "~/components/PostForm";
 
 function PostPreview(props: { text: string }) {
   return <ReactMarkdown>{props.text}</ReactMarkdown>;
@@ -27,12 +11,7 @@ export default function PostCreate() {
   const router = useRouter();
   const params = new URLSearchParams(Object(router.query));
   const isPreview = params.get("preview");
-
-  const [state, setState] = React.useReducer(fieldReducer, {
-    title: "Man Lands on Moon",
-    slug: undefined,
-    content: "# test\nbla bla\n ## test boy",
-  });
+  const [state, setState] = usePostFormState();
 
   const togglePreview = async () => {
     let url = router.pathname;
@@ -59,29 +38,7 @@ export default function PostCreate() {
           <PostPreview text={state.content} />
         </div>
       ) : (
-        <form className="flex-col">
-          <input
-            placeholder="Title"
-            type="text"
-            name="title"
-            value={state.title}
-            onChange={setState}
-          />
-          <input
-            placeholder="Slug"
-            type="text"
-            name="slug"
-            value={state.slug}
-            onChange={setState}
-          />
-          <textarea
-            placeholder="Content"
-            rows={8}
-            name="content"
-            value={state.content}
-            onChange={setState}
-          />
-        </form>
+        <PostForm state={state} setState={setState} />
       )}
     </div>
   );
