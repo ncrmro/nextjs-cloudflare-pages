@@ -14,6 +14,9 @@ function Layout(props: { children: React.ReactElement }) {
         <Link href="/">John Doe</Link>
       </nav>
       <main>{props.children}</main>
+      <footer>
+        <Link href="/posts/create">Create</Link>
+      </footer>
     </>
   );
 }
