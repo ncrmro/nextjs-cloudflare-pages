@@ -1,6 +1,9 @@
-schema: schema.graphql
+schema: https://api.lens.dev
 documents: ./src/**/*.graphql
 generates:
+  schema.json:
+    plugins:
+      - introspection
   src/graphql-types.ts:
     plugins:
       - typescript
